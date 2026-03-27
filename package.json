@@ -13,6 +13,7 @@
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "reactjs-localstorage": "^1.0.1",
     "remixicon-react": "^1.0.0"
   },
   "devDependencies": {
@@ -21,9 +22,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/reactjs-localstorage": "^1.0.2",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.2",
     "typescript": "^5"
   }
 }

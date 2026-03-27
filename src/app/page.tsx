@@ -1,23 +1,61 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import About from '../components/About'
+import Contact from '../components/Contact'
 import Experience from '../components/Experience'
 import Hero from '../components/Hero'
+import Navbar from '../components/Navbar'
 import PricingPlans from '../components/PricingPlans'
 import Projects from '../components/Projects'
+import Questions from '../components/Questions'
 import Reviews from '../components/Reviews'
 import Skills from '../components/Skills'
+import Load from '../components/sub/Load'
+import Toggle from '../components/sub/Toggle'
 
 export default function Home() {
+  const [id, setId] = useState(0)
+  const compsRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const intersecting = entry.isIntersecting
+          if (intersecting) {
+            setId(Number(entry.target.id))
+          }
+        })
+      },
+      { threshold: 0.3 },
+    )
+    if (!compsRef.current) return
+
+    const compsArr = Array.from(compsRef.current.children)
+    compsArr.forEach((comp) => {
+      const el = comp as HTMLElement
+      observer.observe(el)
+    })
+  }, [])
+
   return (
-    <div>
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Reviews />
-      <Projects />
-      <PricingPlans />
-    </div>
+    <>
+      <Load />
+      <Toggle>
+        <Navbar id={id} />
+        <div className="w-min" ref={compsRef}>
+          <Hero />
+          <About />
+          <Experience />
+          <Skills />
+          <Reviews />
+          <Projects />
+          <PricingPlans />
+          <Contact />
+          <Questions />
+        </div>
+      </Toggle>
+    </>
   )
 }

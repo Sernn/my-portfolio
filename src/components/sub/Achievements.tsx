@@ -33,7 +33,7 @@ const Achievements = ({ title, amount, children }: IAchievements) => {
       <span className="text-4xl lg:text-2xl text-gray-300">{children}</span>
       <h1 className="flex flex-col gap-y-2">
         <motion.span
-          className="text-2xl lg:text-xl font-light text-yellow-500"
+          className="text-2xl lg:text-xl font-light text-yellow-500 "
           onViewportEnter={() => {
             if (!hasCounted) {
               count(amount)
@@ -44,7 +44,7 @@ const Achievements = ({ title, amount, children }: IAchievements) => {
         >
           {number}
         </motion.span>
-        <span className="text-sm tracking-wide text-gray-500">{title}</span>
+        <span className="text-sm tracking-wide text-gray-500 dark:text-white transition-colors">{title}</span>
       </h1>
     </div>
   )

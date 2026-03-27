@@ -45,7 +45,7 @@ const Reviews = () => {
   }, [index, direction, leftClickHandler, rightClickHandler])
 
   return (
-    <div className="my-20 px-96">
+    <div id="reviews" className="my-20">
       <Heading text="Reviews" />
       <div className="flex flex-col items-center justify-center">
         <motion.div
@@ -59,7 +59,7 @@ const Reviews = () => {
             <motion.div
               initial={{ x: '100%' }}
               key={`id-${i}`}
-              className="absolute inset-0 flex flex-col items-center justify-center gap-y-7 lg:gap-y-4 border border-yellow-500 bg-zinc-50 p-14 lg:p-5 rounded-xl"
+              className="absolute inset-0 flex flex-col items-center justify-center gap-y-7 lg:gap-y-4 border border-yellow-500 bg-zinc-50 p-14 lg:p-5 rounded-xl dark:bg-zinc-700 transition-colors"
               ref={(el) => {
                 if (el) slides.current.push(el)
               }}
@@ -72,7 +72,7 @@ const Reviews = () => {
                 className="w-[130px] aspect-square rounded-full border border-yellow-500 p-4 object-contain"
               />
               <h1 className="text-2xl md:text-xl text-center tracking-wider text-yellow-600 ">{review.name}</h1>
-              <p className="text-lg mg:text-sm text-justify font-extralight tracking-wide text-gray-600 first-letter:pl-2">
+              <p className="text-lg mg:text-sm text-justify font-extralight tracking-wide text-gray-600 first-letter:pl-2 dark:text-white transition-colors">
                 {review.comment}
               </p>
               <div className="flex flex-col items-center justify-center gap-y-2">
@@ -94,9 +94,8 @@ const Reviews = () => {
         </motion.div>
         <div className="flex gap-x-4 text-4xl text-yellow-500 mt-5">
           <button
-            className={`${
-              index === 0 ? 'opacity-30 pointer-events-none' : 'opacity-100 pointer-events-auto'
-            } hover:scale-150 transition-all cursor-pointer`}
+            className={`${index === 0 ? 'opacity-30 pointer-events-none' : 'opacity-100 pointer-events-auto'
+              } hover:scale-150 transition-all cursor-pointer`}
             onClick={() => {
               setDirection(true)
               setIndex(index - 1)
@@ -105,9 +104,8 @@ const Reviews = () => {
             {arrowIcons[0]}
           </button>
           <button
-            className={`${
-              index === reviewsData?.length - 1 ? 'opacity-30 pointer-events-none' : 'opacity-100 pointer-events-auto'
-            } hover:scale-150 transition-all cursor-pointer`}
+            className={`${index === reviewsData?.length - 1 ? 'opacity-30 pointer-events-none' : 'opacity-100 pointer-events-auto'
+              } hover:scale-150 transition-all cursor-pointer`}
             onClick={() => {
               setDirection(false)
               setIndex(index + 1)
